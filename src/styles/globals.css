@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Customization */
+@theme {
+	--color-blue-50: #f0f9ff;
+	--color-blue-100: #e0f2fe;
+	--color-blue-200: #bae6fd;
+	--color-blue-300: #7dd3fc;
+	--color-blue-400: #38bdf8;
+	--color-blue-500: #0ea5e9;
+	--color-blue-600: #0284c7;
+	--color-blue-700: #0369a1;
+	--color-blue-800: #075985;
+	--color-blue-900: #0c3d66;
+	--font-sans: system-ui, sans-serif;
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+	--animation-fadeIn: fadeIn 0.6s ease-out;
+	--animation-slideIn: slideIn 0.6s ease-out;
+}
 
 /* Tipografía */
 @layer base {
