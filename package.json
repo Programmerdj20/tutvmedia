@@ -1,0 +1,20 @@
+{
+  "name": "tutvmedia",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.15.9"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro-icon": "^1.1.5",
+    "embla-carousel": "^8.6.0",
+    "tailwindcss": "^4.1.17"
+  }
+}

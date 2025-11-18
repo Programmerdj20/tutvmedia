@@ -1,0 +1,52 @@
+---
+import type { MovieResult } from '../types/movie';
+import { getImageUrl } from '../services/tmdb';
+
+export interface Props {
+	movie: MovieResult;
+}
+
+const { movie } = Astro.props;
+const posterUrl = getImageUrl(movie.poster_path, 'w500');
+const releaseYear = new Date(movie.release_date).getFullYear();
+const ratingColor = movie.vote_average >= 7 ? 'text-green-500' : movie.vote_average >= 5 ? 'text-yellow-500' : 'text-red-500';
+---
+
+<div class="group cursor-pointer animate-fadeIn">
+	<div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-white border border-blue-100 h-80 mb-3">
+		<img
+			src={posterUrl}
+			alt={movie.title}
+			class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+		/>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+			<div class="w-full">
+				<p class="text-white text-sm font-medium mb-2 line-clamp-2">
+					{movie.overview}
+				</p>
+				<button class="w-full btn-primary text-sm py-2">
+					Ver Detalles
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="px-1">
+		<h3 class="font-bold text-gray-900 text-sm line-clamp-2 mb-1 group-hover:text-blue-600 transition-colors">
+			{movie.title}
+		</h3>
+
+		<div class="flex items-center justify-between mb-2">
+			<span class="text-xs text-gray-500">
+				{releaseYear}
+			</span>
+			<span class={`text-sm font-bold ${ratingColor}`}>
+				★ {movie.vote_average.toFixed(1)}
+			</span>
+		</div>
+
+		<p class="text-xs text-gray-600 line-clamp-2">
+			{movie.overview}
+		</p>
+	</div>
+</div>

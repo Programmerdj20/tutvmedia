@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografía */
+@layer base {
+	body {
+		@apply font-sans;
+	}
+
+	h1 {
+		@apply text-4xl font-bold tracking-tight;
+	}
+
+	h2 {
+		@apply text-3xl font-bold tracking-tight;
+	}
+
+	h3 {
+		@apply text-2xl font-bold tracking-tight;
+	}
+
+	h4 {
+		@apply text-xl font-bold tracking-tight;
+	}
+
+	a {
+		@apply transition-colors duration-200;
+	}
+}
+
+/* Componentes reutilizables */
+@layer components {
+	.btn-primary {
+		@apply px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-200 transition-all duration-200;
+	}
+
+	.btn-secondary {
+		@apply px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors duration-200;
+	}
+
+	.card {
+		@apply bg-white rounded-lg border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+	}
+
+	.gradient-text {
+		@apply bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent;
+	}
+}
+
+/* Smoothscroll */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.animate-fadeIn {
+	animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideIn {
+	animation: slideIn 0.6s ease-out;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #93c5fd;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #60a5fa;
+}
