@@ -1,0 +1,221 @@
+---
+// Componente: Sección de Planes / Precios
+// Muestra 4 opciones de suscripción con características y precio
+
+interface Plan {
+	duration: string;
+	price: number;
+	frequency: string;
+	bonus?: string;
+	isHighlighted?: boolean;
+}
+
+const plans: Plan[] = [
+	{
+		duration: '1 MES',
+		price: 9,
+		frequency: 'Paga cada mes',
+		isHighlighted: false,
+	},
+	{
+		duration: '3 MESES',
+		price: 27,
+		frequency: 'Paga cada 3 meses',
+		isHighlighted: false,
+	},
+	{
+		duration: '6 MESES',
+		price: 49,
+		frequency: 'Paga cada 6 meses',
+		bonus: '+1 MES GRATIS',
+		isHighlighted: false,
+	},
+	{
+		duration: '12 MESES',
+		price: 87,
+		frequency: 'Paga cada 12 meses',
+		bonus: '+2 MESES GRATIS',
+		isHighlighted: true,
+	},
+];
+
+const features = [
+	'+1000 canales',
+	'Series + Películas',
+	'Calidad HD y FHD',
+	'3 pantallas',
+	'Paquete Premium',
+];
+
+const telegramLink = 'https://t.me/+hvO0sXVTNxs2MTZh';
+---
+
+<section class="w-full bg-gradient-to-b from-almost-black to-navy py-20 px-4 md:px-8">
+	<div class="max-w-7xl mx-auto">
+		<!-- Encabezado -->
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Nuestros Planes</h2>
+			<p class="text-soft-gray text-base md:text-lg max-w-2xl mx-auto">
+				Selecciona un plan y obtén acceso a todo el contenido de TutvMedia.
+			</p>
+		</div>
+
+		<!-- Grid de Planes -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+			{plans.map((plan, index) => (
+				<div
+					class={`
+						pricing-card relative
+						rounded-2xl p-8 transition-all duration-300
+						flex flex-col justify-between
+						${plan.isHighlighted
+							? 'border-2 border-cyan bg-gradient-to-br from-navy/80 to-almost-black/80 shadow-lg scale-105 lg:scale-110'
+							: 'border border-cyan/30 bg-navy/50 backdrop-blur-sm hover:border-cyan/60 hover:shadow-md'
+						}
+					`}
+					style={`animation-delay: ${index * 100}ms`}
+				>
+					{plan.isHighlighted && (
+						<div class="absolute -top-3 -right-3 bg-gradient-to-r from-cyan to-cyan-dark text-almost-black font-bold py-2 px-4 rounded-lg transform rotate-3 shadow-lg text-xs md:text-sm">
+							MÁS VENDIDA
+						</div>
+					)}
+					<!-- Duración y Precio -->
+					<div class="mb-6">
+						<h3 class="text-lg font-bold text-white mb-4">{plan.duration}</h3>
+						<div class="flex items-baseline gap-2 mb-2">
+							<span class="text-cyan text-4xl font-bold">${plan.price}</span>
+							<span class="text-soft-gray text-sm">{plan.frequency}</span>
+						</div>
+						{plan.bonus && (
+							<p class="text-cyan text-sm font-semibold mt-3">{plan.bonus}</p>
+						)}
+					</div>
+
+					<!-- Divider -->
+					<div class="divider-cyan mb-6"></div>
+
+					<!-- Features -->
+					<ul class="space-y-3 mb-8 flex-grow">
+						{features.map((feature) => (
+							<li class="flex items-start gap-3 text-soft-gray text-sm">
+								<svg class="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+								</svg>
+								<span>{feature}</span>
+							</li>
+						))}
+					</ul>
+
+					<!-- Botón -->
+					<a
+						href={telegramLink}
+						target="_blank"
+						rel="noopener noreferrer"
+						class={`
+							w-full py-3 px-6 rounded-lg font-bold text-center
+							transition-all duration-300 text-sm md:text-base
+							${plan.isHighlighted
+								? 'btn-primary'
+								: 'border border-cyan/50 text-white hover:bg-cyan/10 hover:border-cyan/80'
+							}
+						`}
+					>
+						Solicitar
+					</a>
+				</div>
+			))}
+		</div>
+
+		<!-- Footer Note -->
+		<p class="text-center text-soft-gray text-sm mb-12">
+			Todos los planes incluyen acceso completo sin restricciones
+		</p>
+
+		<!-- Métodos de Pago -->
+		<div class="bg-navy/30 rounded-xl p-8 border border-cyan/20 backdrop-blur-sm">
+			<h3 class="text-center text-lg font-bold text-white mb-8">Métodos de pago aceptados:</h3>
+
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+				<!-- PayPal -->
+				<div class="flex flex-col items-center gap-3">
+					<div class="w-12 h-12 rounded-lg bg-cyan/10 border border-cyan/30 flex items-center justify-center">
+						<svg class="w-6 h-6 text-cyan" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 00-.794.68l-.04.22-.63 4.003-.018.098a.805.805 0 01-.794.68h-2.31a.565.565 0 01-.56-.658l1.187-7.524h2.31c3.238 0 5.774-1.314 6.514-5.12.256-1.313.192-2.447-.3-3.327-.36-.637-.917-1.138-1.593-1.483a2.807 2.807 0 00-.912-.312h-2.31a.805.805 0 00-.794.68l-.04.22-.63 4.003-.018.098a.805.805 0 01-.794.68h-2.31a.565.565 0 01-.56-.658l1.187-7.524h2.31a.805.805 0 00.794-.68l.04-.22.63-4.003.018-.098a.805.805 0 01.794-.68h2.31c.32 0 .629.05.916.15.576.19.13.542 1.593 1.483z"/>
+						</svg>
+					</div>
+					<span class="text-soft-gray text-sm text-center">PayPal</span>
+				</div>
+
+				<!-- Binance / Cripto -->
+				<div class="flex flex-col items-center gap-3">
+					<div class="w-12 h-12 rounded-lg bg-cyan/10 border border-cyan/30 flex items-center justify-center">
+						<svg class="w-6 h-6 text-cyan" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+						</svg>
+					</div>
+					<span class="text-soft-gray text-sm text-center">Binance</span>
+				</div>
+
+				<!-- Transferencia Bancaria -->
+				<div class="flex flex-col items-center gap-3">
+					<div class="w-12 h-12 rounded-lg bg-cyan/10 border border-cyan/30 flex items-center justify-center">
+						<svg class="w-6 h-6 text-cyan" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M20 8h-3V4H7v4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-1 11H5V10h14v9z"/>
+						</svg>
+					</div>
+					<span class="text-soft-gray text-sm text-center">Transferencia<br/>Bancaria</span>
+				</div>
+
+				<!-- Tarjeta Crédito/Débito -->
+				<div class="flex flex-col items-center gap-3">
+					<div class="w-12 h-12 rounded-lg bg-cyan/10 border border-cyan/30 flex items-center justify-center">
+						<svg class="w-6 h-6 text-cyan" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M19 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 4h-14v-2h14v2z"/>
+						</svg>
+					</div>
+					<span class="text-soft-gray text-sm text-center">Tarjeta Crédito/<br/>Débito</span>
+				</div>
+			</div>
+
+			<p class="text-center text-soft-gray text-xs italic">
+				La disponibilidad puede variar según el país.
+			</p>
+		</div>
+	</div>
+</section>
+
+<script>
+	// Intersection Observer para animación de entrada
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px',
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('animate-fadeInUp');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	// Observar todas las tarjetas de precios
+	document.querySelectorAll('.pricing-card').forEach((card) => {
+		card.classList.add('opacity-0', 'translate-y-8');
+		observer.observe(card);
+	});
+</script>
+
+<style>
+	.pricing-card {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	.pricing-card.animate-fadeInUp {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>

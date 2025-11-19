@@ -2,6 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/Hero.astro';
 import MovieCarousel from '../components/MovieCarousel.astro';
+import PricingSection from '../components/PricingSection.astro';
 import { getTrendingMovies } from '../services/tmdb';
 
 // Obtener películas trending
@@ -22,4 +23,7 @@ const trendingMovies = await getTrendingMovies('week');
 			/>
 		)
 	}
+
+	<!-- Sección de Planes -->
+	<PricingSection />
 </MainLayout>
