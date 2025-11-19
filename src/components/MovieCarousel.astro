@@ -27,6 +27,13 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 				id={id}
 			>
 				<div class="flex gap-6 pb-4">
+					{/* Películas originales */}
+					{movies.map((movie) => (
+						<div class="flex-none w-[200px] sm:w-[240px]">
+							<MovieCard movie={movie} />
+						</div>
+					))}
+					{/* Películas duplicadas para loop infinito */}
 					{movies.map((movie) => (
 						<div class="flex-none w-[200px] sm:w-[240px]">
 							<MovieCard movie={movie} />
@@ -60,22 +67,64 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 </section>
 
 <script define:vars={{ id }}>
-	// Carrusel con scroll manual simple pero efectivo
+	// Carrusel con scroll automático y manual
 	const carousel = document.getElementById(id);
 	const prevBtn = document.querySelector(`[data-carousel="${id}"].carousel-prev`);
 	const nextBtn = document.querySelector(`[data-carousel="${id}"].carousel-next`);
 
 	const scrollAmount = 300;
+	let autoScrollInterval;
+	let isUserInteracting = false;
 
+	// Función para hacer scroll de 1 en 1 con animación suave
+	const scrollOneItem = () => {
+		if (carousel && !isUserInteracting) {
+			carousel.scrollTo({
+				left: carousel.scrollLeft + scrollAmount,
+				behavior: 'smooth'
+			});
+		}
+	};
+
+	// Iniciar auto-scroll cada 5 segundos
+	const startAutoScroll = () => {
+		autoScrollInterval = setInterval(scrollOneItem, 5000);
+	};
+
+	// Detener auto-scroll
+	const stopAutoScroll = () => {
+		clearInterval(autoScrollInterval);
+	};
+
+	// Scroll manual prev
 	if (prevBtn && carousel) {
 		prevBtn.addEventListener('click', () => {
-			carousel.scrollLeft -= scrollAmount;
+			isUserInteracting = true;
+			carousel.scrollTo({
+				left: carousel.scrollLeft - scrollAmount,
+				behavior: 'smooth'
+			});
+			stopAutoScroll();
+			setTimeout(() => {
+				isUserInteracting = false;
+				startAutoScroll();
+			}, 1500);
 		});
 	}
 
+	// Scroll manual next
 	if (nextBtn && carousel) {
 		nextBtn.addEventListener('click', () => {
-			carousel.scrollLeft += scrollAmount;
+			isUserInteracting = true;
+			carousel.scrollTo({
+				left: carousel.scrollLeft + scrollAmount,
+				behavior: 'smooth'
+			});
+			stopAutoScroll();
+			setTimeout(() => {
+				isUserInteracting = false;
+				startAutoScroll();
+			}, 1500);
 		});
 	}
 
@@ -99,6 +148,24 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 
 	carousel?.addEventListener('scroll', updateButtonsVisibility);
 	updateButtonsVisibility();
+
+	// Detectar cuando llegó al final para resetear al inicio (loop infinito)
+	const resetScrollPosition = () => {
+		if (!carousel) return;
+
+		const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+		// Si llegó al final del primer set, volver al inicio suavemente
+		if (carousel.scrollLeft >= maxScroll - 50) {
+			// Resetear sin animación
+			carousel.scrollLeft = 0;
+		}
+	};
+
+	carousel?.addEventListener('scroll', resetScrollPosition);
+
+	// Iniciar auto-scroll al cargar
+	startAutoScroll();
 </script>
 
 <style>
