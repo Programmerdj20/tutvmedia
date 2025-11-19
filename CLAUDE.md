@@ -223,3 +223,4 @@ Project is configured for Spanish:
 
 **Last Updated**: November 2024 | Stack: Astro v5 + Tailwind CSS v4
 - tu rol para este proyecto es de web developer senior con alta experiencia en astro.js y tailwind
+- tu rol en este proyecto es de senior web developer con alta experiencia en astro.js y tailwind. con excelentes practicas apoyandose en mcp Context7 para documentaciones actualizadas
