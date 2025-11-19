@@ -35,7 +35,7 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 
 		<title>{title}</title>
 	</head>
-	<body class="bg-white text-gray-900 antialiased font-sans">
+	<body class="bg-white text-gray-900 antialiased font-sans scroll-smooth">
 		<!-- Overlay para sidebar -->
 		<div
 			id="overlay"
@@ -66,10 +66,10 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 
 				<!-- Links del sidebar -->
 				<nav class="space-y-6">
-					<a href="/" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a href="#inicio" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
 						Inicio
 					</a>
-					<a href="#" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a href="#planes" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
 						Planes
 					</a>
 					<a href="#" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
@@ -95,10 +95,10 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 
 				<!-- Navegación Desktop (oculta en móvil) -->
 				<div class="hidden md:flex items-center gap-8">
-					<a href="/" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a href="#inicio" class="text-white hover:text-blue-300 transition-colors font-medium">
 						Inicio
 					</a>
-					<a href="#" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a href="#planes" class="text-white hover:text-blue-300 transition-colors font-medium">
 						Planes
 					</a>
 					<a href="#" class="text-white hover:text-blue-300 transition-colors font-medium">
@@ -174,7 +174,7 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 			</div>
 		</footer>
 
-		<!-- Script para manejar el sidebar -->
+		<!-- Script para manejar el sidebar y smooth scroll -->
 		<script>
 			const hamburger = document.getElementById('hamburger');
 			const sidebar = document.getElementById('sidebar');
@@ -208,6 +208,25 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 			// Cerrar al hacer clic en un link
 			sidebarLinks.forEach((link) => {
 				link.addEventListener('click', closeSidebarFn);
+			});
+
+			// Smooth scroll mejorado con velocidad controlada
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					const href = this.getAttribute('href');
+					// Solo interceptar si es un hash válido (no solo "#")
+					if (href !== '#' && href.startsWith('#')) {
+						e.preventDefault();
+						const target = document.querySelector(href);
+						if (target) {
+							// Usar scrollIntoView con opciones de smooth scroll
+							target.scrollIntoView({
+								behavior: 'smooth',
+								block: 'start'
+							});
+						}
+					}
+				});
 			});
 		</script>
 	</body>

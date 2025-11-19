@@ -99,6 +99,29 @@
 	a:hover {
 		color: var(--color-cyan-dark);
 	}
+
+	/* Smooth scroll muy suave */
+	html {
+		scroll-behavior: smooth;
+		/* Desplazamiento más lento con easing personalizado */
+		scroll-timeline: view();
+	}
+}
+
+/* ========================================
+   SMOOTH SCROLL PERSONALIZADO
+   ======================================== */
+@supports (animation-timeline: view()) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Fallback para navegadores sin soporte */
+@supports not (animation-timeline: view()) {
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 /* ========================================
