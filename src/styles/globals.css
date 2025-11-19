@@ -1,81 +1,258 @@
 @import "tailwindcss";
 
-/* Tailwind v4 Theme Customization */
+/* ========================================
+   PALETA DE COLORES - Inspirada en Logo TUTV
+   ======================================== */
 @theme {
-	--color-blue-50: #f0f9ff;
-	--color-blue-100: #e0f2fe;
-	--color-blue-200: #bae6fd;
-	--color-blue-300: #7dd3fc;
-	--color-blue-400: #38bdf8;
-	--color-blue-500: #0ea5e9;
-	--color-blue-600: #0284c7;
-	--color-blue-700: #0369a1;
-	--color-blue-800: #075985;
-	--color-blue-900: #0c3d66;
-	--font-sans: system-ui, sans-serif;
+	/* Colores Primarios */
+	--color-cyan: #00CEFF; /* Azul vibrante del logo */
+	--color-cyan-dark: #0088CC; /* Azul más oscuro */
+	--color-navy: #0A1D37; /* Azul oscuro fondo */
+	--color-almost-black: #050B15; /* Fondo ultra oscuro */
+	--color-cyan-light: #B0E8FF; /* Azul muy claro */
+
+	/* Escala de Grises */
+	--color-white: #FFFFFF;
+	--color-soft-gray: #A0B9CC;
+	--color-medium-gray: #556677;
+	--color-dark-gray: #2d3748;
+
+	/* Tipografías - Google Fonts */
+	--font-display: 'Exo 2', sans-serif;
+	--font-sans: 'Inter', system-ui, sans-serif;
+
+	/* Sombras */
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+	--shadow-cyan: 0 8px 25px rgba(0, 206, 255, 0.3);
+	--shadow-cyan-lg: 0 15px 35px rgba(0, 206, 255, 0.5);
+
+	/* Animaciones */
 	--animation-fadeIn: fadeIn 0.6s ease-out;
 	--animation-slideIn: slideIn 0.6s ease-out;
+	--animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+	/* Breakpoints */
+	--breakpoint-xs: 30rem;
+	--breakpoint-sm: 40rem;
+	--breakpoint-md: 48rem;
+	--breakpoint-lg: 64rem;
+	--breakpoint-xl: 80rem;
+	--breakpoint-2xl: 96rem;
 }
 
-/* Tipografía */
+/* ========================================
+   TIPOGRAFÍA BASE
+   ======================================== */
 @layer base {
+	/* Configuración de fuentes */
 	body {
-		@apply font-sans;
+		@apply font-sans text-gray-900;
+		font-family: var(--font-sans);
+		background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
 	}
 
+	/* Títulos con fuente display bold */
 	h1 {
-		@apply text-4xl font-bold tracking-tight;
+		@apply text-5xl sm:text-6xl font-bold tracking-tight leading-tight;
+		font-family: var(--font-display);
+		font-weight: 800;
 	}
 
 	h2 {
-		@apply text-3xl font-bold tracking-tight;
+		@apply text-4xl sm:text-5xl font-bold tracking-tight leading-tight;
+		font-family: var(--font-display);
+		font-weight: 800;
 	}
 
 	h3 {
-		@apply text-2xl font-bold tracking-tight;
+		@apply text-3xl sm:text-4xl font-bold tracking-tight;
+		font-family: var(--font-display);
+		font-weight: 700;
 	}
 
 	h4 {
+		@apply text-2xl font-bold tracking-tight;
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
+
+	h5, h6 {
 		@apply text-xl font-bold tracking-tight;
+		font-family: var(--font-display);
+		font-weight: 600;
+	}
+
+	p {
+		@apply text-base leading-relaxed;
+		font-family: var(--font-sans);
+		font-weight: 400;
 	}
 
 	a {
-		@apply transition-colors duration-200;
+		@apply transition-colors duration-200 font-medium;
+		color: var(--color-cyan);
+	}
+
+	a:hover {
+		color: var(--color-cyan-dark);
 	}
 }
 
-/* Componentes reutilizables */
+/* ========================================
+   COMPONENTES REUTILIZABLES
+   ======================================== */
 @layer components {
+	/* BOTONES */
+
+	/* Botón Primario - Gradiente Cyan */
 	.btn-primary {
-		@apply px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-200 transition-all duration-200;
+		@apply px-8 py-4 font-bold rounded-lg transition-all duration-300 transform hover:scale-105;
+		background: linear-gradient(45deg, #00CEFF, #0088CC);
+		color: white;
+		font-family: var(--font-display);
+		font-weight: 700;
+		border: none;
+		cursor: pointer;
+		box-shadow: 0 8px 25px rgba(0, 206, 255, 0.3);
 	}
 
+	.btn-primary:hover {
+		box-shadow: 0 15px 35px rgba(0, 206, 255, 0.5);
+		transform: translateY(-3px);
+	}
+
+	.btn-primary:active {
+		transform: translateY(-1px);
+	}
+
+	/* Botón Secundario - Outline */
 	.btn-secondary {
-		@apply px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors duration-200;
+		@apply px-8 py-4 font-bold rounded-lg transition-all duration-300;
+		background: transparent;
+		color: white;
+		border: 2px solid #00CEFF;
+		font-family: var(--font-display);
+		font-weight: 700;
+		cursor: pointer;
 	}
 
+	.btn-secondary:hover {
+		background: rgba(0, 206, 255, 0.1);
+		box-shadow: 0 8px 25px rgba(0, 206, 255, 0.2);
+	}
+
+	/* Botón Terciario - Ghost */
+	.btn-ghost {
+		@apply px-6 py-3 font-semibold rounded-lg transition-colors duration-200;
+		color: #A0B9CC;
+		background: transparent;
+		font-family: var(--font-sans);
+		border: none;
+		cursor: pointer;
+	}
+
+	.btn-ghost:hover {
+		color: #00CEFF;
+	}
+
+	/* TARJETAS */
+
+	/* Tarjeta Base */
 	.card {
-		@apply bg-white rounded-lg border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+		@apply rounded-2xl p-6 transition-all duration-300;
+		background: rgba(10, 29, 55, 0.7);
+		border: 1px solid rgba(0, 206, 255, 0.3);
+		backdrop-filter: blur(10px);
 	}
 
+	.card:hover {
+		border-color: rgba(0, 206, 255, 0.6);
+		box-shadow: 0 8px 25px rgba(0, 206, 255, 0.15);
+	}
+
+	/* Tarjeta Premium */
+	.card-premium {
+		@apply rounded-2xl p-8 transition-all duration-300;
+		background: linear-gradient(145deg, rgba(10, 29, 55, 0.8) 0%, rgba(5, 11, 21, 0.95) 100%);
+		border: 1px solid rgba(0, 206, 255, 0.3);
+		backdrop-filter: blur(10px);
+	}
+
+	.card-premium:hover {
+		border-color: rgba(0, 206, 255, 0.6);
+		box-shadow: 0 20px 40px rgba(0, 206, 255, 0.2);
+		transform: translateY(-4px);
+	}
+
+	/* TEXTOS */
+
+	/* Texto con Gradiente */
 	.gradient-text {
-		@apply bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent;
+		background: linear-gradient(135deg, #00CEFF 0%, #7B00FF 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-family: var(--font-display);
+	}
+
+	/* Texto Secundario */
+	.text-secondary {
+		color: #A0B9CC;
+	}
+
+	/* SECCIONES */
+
+	/* Hero Background */
+	.hero-bg {
+		background: linear-gradient(135deg, #0A1D37 0%, #050B15 100%);
+	}
+
+	.hero-gradient-overlay {
+		background: linear-gradient(135deg, rgba(0, 206, 255, 0.1) 0%, rgba(123, 0, 255, 0.1) 100%);
+	}
+
+	/* Badge / Chip */
+	.badge-cyan {
+		@apply inline-block px-4 py-2 rounded-full font-semibold;
+		background: rgba(0, 206, 255, 0.15);
+		color: #00CEFF;
+		border: 1px solid rgba(0, 206, 255, 0.3);
+	}
+
+	.badge-cyan:hover {
+		background: rgba(0, 206, 255, 0.25);
+	}
+
+	/* Divisor */
+	.divider-cyan {
+		height: 1px;
+		background: linear-gradient(90deg, transparent, #00CEFF, transparent);
+	}
+
+	/* Efecto Glow */
+	.glow-cyan {
+		box-shadow: 0 0 20px rgba(0, 206, 255, 0.5);
 	}
 }
 
-/* Smoothscroll */
+/* ========================================
+   SMOOTH SCROLL
+   ======================================== */
 html {
 	scroll-behavior: smooth;
 }
 
-/* Animaciones personalizadas */
+/* ========================================
+   ANIMACIONES PERSONALIZADAS
+   ======================================== */
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		transform: translateY(10px);
+		transform: translateY(20px);
 	}
 	to {
 		opacity: 1;
@@ -86,7 +263,7 @@ html {
 @keyframes slideIn {
 	from {
 		opacity: 0;
-		transform: translateX(-20px);
+		transform: translateX(-30px);
 	}
 	to {
 		opacity: 1;
@@ -94,6 +271,47 @@ html {
 	}
 }
 
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes glow {
+	0%, 100% {
+		box-shadow: 0 0 20px rgba(0, 206, 255, 0.3);
+	}
+	50% {
+		box-shadow: 0 0 40px rgba(0, 206, 255, 0.6);
+	}
+}
+
+/* Clases de animación reutilizables */
 .animate-fadeIn {
 	animation: fadeIn 0.6s ease-out;
 }
@@ -102,21 +320,41 @@ html {
 	animation: slideIn 0.6s ease-out;
 }
 
-/* Scrollbar personalizado */
+.animate-slideInRight {
+	animation: slideInRight 0.6s ease-out;
+}
+
+.animate-slideUp {
+	animation: slideUp 0.8s ease-out;
+}
+
+.animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+	animation: glow 2s ease-in-out infinite;
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO (Webkit)
+   ======================================== */
 ::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
+	width: 10px;
+	height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #f3f4f6;
+	background: rgba(10, 29, 55, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #93c5fd;
-	border-radius: 4px;
+	background: linear-gradient(180deg, #00CEFF, #0088CC);
+	border-radius: 5px;
+	border: 2px solid rgba(10, 29, 55, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #60a5fa;
+	background: linear-gradient(180deg, #00CEFF, #7B00FF);
+	box-shadow: 0 0 15px rgba(0, 206, 255, 0.5);
 }
