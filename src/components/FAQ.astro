@@ -1,0 +1,107 @@
+---
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+const faqs: FAQItem[] = [
+    {
+        question: "¿Cómo puedo recibir mi suscripción a TUTV-MEDIA?",
+        answer: "Únete a nuestros grupos o canales de Telegram para que un asesor te entregue tus accesos."
+    },
+    {
+        question: "¿Cuál es la velocidad de Internet requerida para que el servicio funcione?",
+        answer: "Para disfrutar al máximo del servicio IPTV, es importante contar con una conexión de Internet estable. Se recomienda una velocidad mínima de 20 Mbps reales y estables para garantizar una buena calidad de imagen y una reproducción fluida, especialmente en contenidos HD o 4K. Las conexiones inestables o con cortes pueden afectar el rendimiento del servicio."
+    },
+    {
+        question: "¿Puedo usar una VPN?",
+        answer: "No es obligatorio usar una VPN para que el servicio funcione. Sin embargo, puede ser útil si tu proveedor de Internet bloquea el acceso o si prefieres una conexión más segura y privada. Recomendamos activarla solo si presentas cortes o bloqueos en tu conexión."
+    },
+    {
+        question: "¿Qué métodos de pago están disponibles?",
+        answer: "Aceptamos pagos mediante PayPal, Binance o moneda local. La disponibilidad puede variar según el país, por lo que se recomienda consultar con un asesor antes de realizar el pago."
+    },
+    {
+        question: "¿También tienes canales para adultos?",
+        answer: "Sí, tenemos más de 300 canales premium para adultos. Este servicio es opcional. Póngase en contacto con nosotros para agregarlo a su suscripción."
+    },
+    {
+        question: "¿Puedo solicitar un reembolso?",
+        answer: "No se realizan reembolsos, ya que ofrecemos una demostración gratuita antes de contratar. En caso de una falla grave del sistema, el servicio será reemplazado o extendido para garantizar la continuidad al cliente."
+    }
+];
+---
+
+<section id="faq" class="w-full bg-gradient-to-b from-navy to-almost-black py-20 px-4 md:px-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Encabezado -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+                Preguntas Frecuentes
+            </h2>
+            <p class="text-soft-gray text-base md:text-lg">
+                Encuentre respuestas a preguntas comunes sobre nuestro servicio
+            </p>
+        </div>
+
+        <!-- Acordeón -->
+        <div class="space-y-4">
+            {faqs.map((faq, index) => (
+                <details
+                    class="faq-item bg-navy/30 rounded-xl border border-cyan/20 backdrop-blur-sm overflow-hidden group"
+                    open={index === 0}
+                >
+                    <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-semibold hover:bg-cyan/5 transition-colors duration-300">
+                        <span class="text-left text-base md:text-lg">{faq.question}</span>
+                        <svg
+                            class="faq-icon w-5 h-5 text-cyan flex-shrink-0 ml-4 transition-transform duration-300"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            />
+                        </svg>
+                    </summary>
+                    <div class="px-6 py-6 text-soft-gray text-base leading-relaxed border-t border-cyan/10">
+                        {faq.answer}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+</section>
+
+<script>
+    // Comportamiento exclusivo - cerrar otras preguntas al abrir una
+    const details = document.querySelectorAll('.faq-item');
+
+    details.forEach((targetDetail) => {
+        targetDetail.addEventListener('toggle', () => {
+            if (targetDetail.open) {
+                details.forEach((detail) => {
+                    if (detail !== targetDetail && detail.open) {
+                        detail.removeAttribute('open');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Rotar icono cuando está abierto */
+    details[open] .faq-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Ocultar marcador nativo del summary */
+    summary::-webkit-details-marker,
+    summary::marker {
+        display: none;
+    }
+</style>

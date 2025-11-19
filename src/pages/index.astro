@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import MovieCarousel from '../components/MovieCarousel.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
 import PricingSection from '../components/PricingSection.astro';
+import FAQ from '../components/FAQ.astro';
 import { getTrendingMovies } from '../services/tmdb';
 
 // Obtener películas trending
@@ -30,4 +31,7 @@ const trendingMovies = await getTrendingMovies('week');
 
 	<!-- Sección de Planes -->
 	<PricingSection />
+
+	<!-- Sección de Preguntas Frecuentes -->
+	<FAQ />
 </MainLayout>
