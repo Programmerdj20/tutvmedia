@@ -1,0 +1,59 @@
+---
+// Hero Section Component
+// Sección principal con imagen de fondo, título, descripción y botones de descarga
+---
+
+<section class="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
+	<!-- Imagen de fondo con overlay -->
+	<div
+		class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+		style={{
+			backgroundImage: 'url(/images/banner_top.webp)',
+		}}
+	></div>
+
+	<!-- Overlay oscuro para opacidad y legibilidad -->
+	<div class="absolute inset-0 bg-black/50"></div>
+
+	<!-- Contenido centrado -->
+	<div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<!-- Título Principal -->
+		<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+			Todo el Entretenimiento Que Quieres, Cuando Quieras
+		</h1>
+
+		<!-- Descripción -->
+		<p class="text-lg sm:text-xl text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+			Accede al instante a canales y contenido on-demand con transmisión rápida y confiable.
+		</p>
+
+		<!-- Botones de Descarga -->
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+			<!-- Google Play Button -->
+			<a
+				href="#"
+				class="transform transition-all duration-300 hover:scale-110 hover:drop-shadow-lg"
+				aria-label="Descargar en Google Play"
+			>
+				<img
+					src="/images/Logo_gplay.webp"
+					alt="Get it on Google Play"
+					class="h-14 sm:h-16 object-contain"
+				/>
+			</a>
+
+			<!-- Downloader Button -->
+			<a
+				href="#"
+				class="transform transition-all duration-300 hover:scale-110 hover:drop-shadow-lg"
+				aria-label="Descargar Downloader"
+			>
+				<img
+					src="/images/Logo_downloader.webp"
+					alt="Downloader"
+					class="h-14 sm:h-16 object-contain"
+				/>
+			</a>
+		</div>
+	</div>
+</section>

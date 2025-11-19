@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
 import MovieCarousel from '../components/MovieCarousel.astro';
 import { getPopularMovies, getTrendingMovies, getImageUrl } from '../services/tmdb';
 
@@ -15,7 +16,10 @@ const backdropUrl = featuredMovie ? getImageUrl(featuredMovie.backdrop_path, 'or
 ---
 
 <MainLayout title="TutvMedia - Películas y Series" description="Descubre películas y series populares con TutvMedia">
-	<!-- Hero Section -->
+	<!-- Hero Principal -->
+	<Hero />
+
+	<!-- Hero Section de Película Destacada -->
 	{
 		featuredMovie && (
 			<section
@@ -91,21 +95,6 @@ const backdropUrl = featuredMovie ? getImageUrl(featuredMovie.backdrop_path, 'or
 			/>
 		)
 	}
-
-	<!-- CTA Section -->
-	<section class="py-16 bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h2 class="text-4xl font-bold mb-4">
-				Explora Miles de Películas
-			</h2>
-			<p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-				Descubre tu próxima película o serie favorita. Acceso a miles de títulos de todo el mundo.
-			</p>
-			<button class="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors">
-				Empezar Exploración
-			</button>
-		</div>
-	</section>
 
 	<!-- Info Section -->
 	<section class="py-16 bg-blue-50">
