@@ -1,0 +1,167 @@
+---
+// Footer.astro - Componente minimalista y profesional para TutvMedia
+---
+
+<footer class="bg-gradient-to-b from-[#050B15] via-[#0A1D37]/50 to-[#050B15] border-t border-[#00CEFF]/20 py-12 md:py-16">
+	<div class="max-w-7xl mx-auto px-6 lg:px-8">
+		<!-- Contenedor principal con grid responsive -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-12">
+			<!-- Sección 1: Logo y Descripción -->
+			<div class="flex flex-col">
+				<a href="/" class="mb-4 inline-block">
+					<img
+						src="/images/Logo_navbar.webp"
+						alt="TUTV.MEDIA"
+						class="h-14 hover:opacity-80 transition-opacity"
+					/>
+				</a>
+				<p class="text-[#A0B9CC] text-sm leading-relaxed">
+					La mejor plataforma para descubrir películas y series en múltiples dispositivos.
+				</p>
+			</div>
+
+			<!-- Sección 2: Enlaces del Navbar -->
+			<div>
+				<h3 class="text-white font-bold font-exo-2 mb-6 text-sm uppercase tracking-wide">
+					Enlaces Rápidos
+				</h3>
+				<nav class="space-y-3">
+					<a
+						href="#inicio"
+						class="text-[#A0B9CC] text-sm hover:text-[#00CEFF] transition-colors duration-200"
+					>
+						Inicio
+					</a>
+					<a
+						href="#planes"
+						class="text-[#A0B9CC] text-sm hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Planes
+					</a>
+					<a
+						href="#"
+						class="text-[#A0B9CC] text-sm hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Instalación
+					</a>
+					<a
+						href="#"
+						class="text-[#A0B9CC] text-sm hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Reseller
+					</a>
+					<a
+						href="#"
+						class="text-[#A0B9CC] text-sm hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Contacto
+					</a>
+				</nav>
+			</div>
+
+			<!-- Sección 3: Plataformas, Telegram y Legal -->
+			<div>
+				<h3 class="text-white font-bold font-exo-2 mb-6 text-sm uppercase tracking-wide">
+					Disponible en
+				</h3>
+				<div class="flex flex-wrap gap-3 mb-10">
+					<!-- Google Play Badge -->
+					<div class="group">
+						<a
+							href="#"
+							class="inline-flex items-center justify-center w-12 h-12 bg-[#0A1D37]/60 border border-[#00CEFF]/30 rounded-lg hover:bg-[#00CEFF]/10 hover:border-[#00CEFF]/60 transition-all duration-200 hover:shadow-lg hover:shadow-[#00CEFF]/20"
+							aria-label="Google Play"
+						>
+							<img
+								src="/images/gplay.svg"
+								alt="Google Play"
+								class="w-6 h-6"
+							/>
+						</a>
+					</div>
+
+					<!-- Roku Badge -->
+					<div class="group">
+						<a
+							href="#"
+							class="inline-flex items-center justify-center w-12 h-12 bg-[#0A1D37]/60 border border-[#00CEFF]/30 rounded-lg hover:bg-[#00CEFF]/10 hover:border-[#00CEFF]/60 transition-all duration-200 hover:shadow-lg hover:shadow-[#00CEFF]/20"
+							aria-label="Roku"
+						>
+							<img
+								src="/images/roku.svg"
+								alt="Roku"
+								class="w-6 h-6"
+							/>
+						</a>
+					</div>
+
+					<!-- Fire TV Badge -->
+					<div class="group">
+						<a
+							href="#"
+							class="inline-flex items-center justify-center w-12 h-12 bg-[#0A1D37]/60 border border-[#00CEFF]/30 rounded-lg hover:bg-[#00CEFF]/10 hover:border-[#00CEFF]/60 transition-all duration-200 hover:shadow-lg hover:shadow-[#00CEFF]/20"
+							aria-label="Fire TV"
+						>
+							<img
+								src="/images/firetv.svg"
+								alt="Fire TV"
+								class="w-6 h-6"
+							/>
+						</a>
+					</div>
+
+					<!-- Telegram Badge -->
+					<div class="group">
+						<a
+							href="https://t.me/+hvO0sXVTNxs2MTZh"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center w-12 h-12 bg-[#0A1D37]/60 border border-[#00CEFF]/30 rounded-lg hover:bg-[#00CEFF]/10 hover:border-[#00CEFF]/60 transition-all duration-200 hover:shadow-lg hover:shadow-[#00CEFF]/20"
+							aria-label="Telegram"
+						>
+							<img
+								src="/images/telegram.svg"
+								alt="Telegram"
+								class="w-6 h-6"
+							/>
+						</a>
+					</div>
+				</div>
+
+				<!-- Enlaces Legales -->
+				<div class="space-y-2">
+					<h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-3">Legal</h4>
+					<a
+						href="#"
+						class="text-[#A0B9CC] text-xs hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Términos de Servicio
+					</a>
+					<a
+						href="#"
+						class="text-[#A0B9CC] text-xs hover:text-[#00CEFF] transition-colors duration-200 block"
+					>
+						Política de Privacidad
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Divisor -->
+		<div class="border-t border-[#00CEFF]/10 my-12"></div>
+
+		<!-- Sección Copyright -->
+		<div class="text-center">
+			<p class="text-[#556677] text-xs">
+				© {new Date().getFullYear()} TutvMedia. Todos los derechos reservados.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer {
+		/* Efecto sutil de glow en el borde superior */
+		box-shadow: inset 0 1px 0 rgba(0, 206, 255, 0.2);
+	}
+</style>

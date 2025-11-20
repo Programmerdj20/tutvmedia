@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
 	title?: string;
@@ -153,48 +154,8 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 			<slot />
 		</main>
 
-		<!-- Footer -->
-		<footer class="bg-gradient-to-b from-blue-50 to-white border-t border-blue-100 py-12 mt-20">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-					<div>
-						<h3 class="font-bold text-gray-900 mb-4">TutvMedia</h3>
-						<p class="text-sm text-gray-600">
-							Tu plataforma favorita para descubrir películas y series de todo el mundo.
-						</p>
-					</div>
-					<div>
-						<h4 class="font-semibold text-gray-900 mb-4">Productos</h4>
-						<ul class="space-y-2 text-sm text-gray-600">
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Películas</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Series</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Estrenos</a></li>
-						</ul>
-					</div>
-					<div>
-						<h4 class="font-semibold text-gray-900 mb-4">Comunidad</h4>
-						<ul class="space-y-2 text-sm text-gray-600">
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">GitHub</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Twitter</a></li>
-						</ul>
-					</div>
-					<div>
-						<h4 class="font-semibold text-gray-900 mb-4">Legal</h4>
-						<ul class="space-y-2 text-sm text-gray-600">
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Privacidad</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Términos</a></li>
-							<li><a href="#" class="hover:text-blue-600 transition-colors">Contacto</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="border-t border-blue-100 pt-8">
-					<p class="text-center text-sm text-gray-600">
-						© 2024 TutvMedia. Todos los derechos reservados.
-					</p>
-				</div>
-			</div>
-		</footer>
+		<!-- Footer Component -->
+		<Footer />
 
 		<!-- Script para manejar el sidebar y smooth scroll -->
 		<script>
