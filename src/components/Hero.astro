@@ -1,9 +1,9 @@
 ---
-// Hero Section Component
-// Sección principal con imagen de fondo, título, descripción y botones de plataformas
+// Hero Section Component con Badges Oficiales
+// Badges profesionales de Google Play, Roku y Fire TV
 ---
 
-<section id="inicio" class="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
+<section id="inicio" class="relative w-full h-[75vh] sm:h-[80vh] overflow-hidden flex items-center justify-center">
 	<!-- Imagen de fondo con overlay -->
 	<div
 		class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -12,75 +12,76 @@
 		}}
 	></div>
 
-	<!-- Overlay oscuro para opacidad y legibilidad -->
+	<!-- Overlay oscuro para legibilidad -->
 	<div class="absolute inset-0 bg-black/50"></div>
 
 	<!-- Contenido centrado -->
 	<div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<!-- Título Principal -->
-		<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+		<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 sm:mb-6 leading-tight">
 			Todo el Entretenimiento Que Quieres, Cuando Quieras
 		</h1>
 
 		<!-- Descripción -->
-		<p class="text-lg sm:text-xl text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+		<p class="text-lg sm:text-xl text-gray-100 mb-12 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
 			Accede al instante a canales y contenido on-demand con transmisión rápida y confiable.
 		</p>
 
-		<!-- Nuevo Texto de Plataformas -->
+		<!-- Texto de Plataformas -->
 		<p class="text-xl sm:text-2xl font-semibold text-white mb-8">
 			Disfruta TUTV MEDIA en todos tus dispositivos
 		</p>
 
-		<!-- Botones de Plataformas -->
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-			<!-- Google Play Button (Link Externo) -->
+		<!-- Badges de Plataformas -->
+		<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 w-full max-w-2xl mx-auto px-4 sm:px-0">
+
+			<!-- Badge 1: Google Play -->
 			<a
 				href="https://play.google.com/store/apps/details?id=com.onestream.oneplaymobile"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="platform-btn"
+				class="platform-badge"
 				aria-label="Descargar en Google Play"
 			>
-				<svg class="w-12 h-12 sm:w-14 sm:h-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M6 6C6 4.34315 7.34315 3 9 3H39C40.6569 3 42 4.34315 42 6V42C42 43.6569 40.6569 45 39 45H9C7.34315 45 6 43.6569 6 42V6Z" fill="#00CEFF"/>
-					<path d="M13.5 24L26.25 11.25L29.25 14.25L16.5 27L13.5 24Z" fill="white"/>
-					<path d="M13.5 24L26.25 36.75L29.25 33.75L16.5 21L13.5 24Z" fill="white"/>
-					<path d="M29.25 14.25L26.25 11.25L32.25 5.25L35.25 8.25L29.25 14.25Z" fill="white" opacity="0.8"/>
-					<path d="M29.25 33.75L26.25 36.75L32.25 42.75L35.25 39.75L29.25 33.75Z" fill="white" opacity="0.8"/>
-				</svg>
-				<span class="font-bold text-sm sm:text-base">Google Play</span>
+				<div class="platform-badge-content">
+					<img src="/images/gplay.svg" alt="Google Play Logo" class="platform-logo"/>
+					<div class="platform-text">
+						<p class="platform-label">Disponible en</p>
+						<p class="platform-name">Google Play</p>
+					</div>
+				</div>
 			</a>
 
-			<!-- Roku Button (Modal) -->
+			<!-- Badge 2: Roku -->
 			<button
 				data-modal-trigger="roku-modal"
-				class="platform-btn"
-				aria-label="Información para Roku"
+				class="platform-badge"
+				aria-label="Obtener en Roku"
 			>
-				<svg class="w-12 h-12 sm:w-14 sm:h-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<rect x="6" y="6" width="36" height="36" rx="6" fill="#6F36BC"/>
-					<path d="M18 16C18 15.4477 18.4477 15 19 15H22C22.5523 15 23 15.4477 23 16V20H18V16Z" fill="white"/>
-					<path d="M18 22H23V32C23 32.5523 22.5523 33 22 33H19C18.4477 33 18 32.5523 18 32V22Z" fill="white"/>
-					<path d="M25 22L30 33H26L23 24V22H25Z" fill="white"/>
-				</svg>
-				<span class="font-bold text-sm sm:text-base">Roku</span>
+				<div class="platform-badge-content">
+					<img src="/images/roku.svg" alt="Roku Logo" class="platform-logo"/>
+					<div class="platform-text">
+						<p class="platform-label">Disponible en</p>
+						<p class="platform-name">Roku</p>
+					</div>
+				</div>
 			</button>
 
-			<!-- Fire Stick Button (Modal) -->
+			<!-- Badge 3: Fire TV -->
 			<button
 				data-modal-trigger="firestick-modal"
-				class="platform-btn"
-				aria-label="Información para Fire Stick"
+				class="platform-badge"
+				aria-label="Obtener en Amazon Fire TV"
 			>
-				<svg class="w-12 h-12 sm:w-14 sm:h-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<circle cx="24" cy="24" r="18" fill="#FF9900"/>
-					<path d="M24 12C24 12 20 16 20 20C20 22.2091 21.7909 24 24 24C26.2091 24 28 22.2091 28 20C28 16 24 12 24 12Z" fill="white"/>
-					<path d="M17 26C17 26 15 28 15 30C15 31.1046 15.8954 32 17 32C18.1046 32 19 31.1046 19 30C19 28 17 26 17 26Z" fill="white" opacity="0.9"/>
-					<path d="M31 26C31 26 29 28 29 30C29 31.1046 29.8954 32 31 32C32.1046 32 33 31.1046 33 30C33 28 31 26 31 26Z" fill="white" opacity="0.9"/>
-				</svg>
-				<span class="font-bold text-sm sm:text-base">Fire Stick</span>
+				<div class="platform-badge-content">
+					<img src="/images/firetv.svg" alt="Fire TV Logo" class="platform-logo"/>
+					<div class="platform-text">
+						<p class="platform-label">Disponible en</p>
+						<p class="platform-name">Amazon Fire TV</p>
+					</div>
+				</div>
 			</button>
+
 		</div>
 	</div>
 </section>
@@ -89,14 +90,7 @@
 <dialog id="roku-modal" class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<svg class="w-16 h-16 mx-auto mb-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect x="6" y="6" width="36" height="36" rx="6" fill="#6F36BC"/>
-				<path d="M18 16C18 15.4477 18.4477 15 19 15H22C22.5523 15 23 15.4477 23 16V20H18V16Z" fill="white"/>
-				<path d="M18 22H23V32C23 32.5523 22.5523 33 22 33H19C18.4477 33 18 32.5523 18 32V22Z" fill="white"/>
-				<path d="M25 22L30 33H26L23 24V22H25Z" fill="white"/>
-			</svg>
-			<h2 class="text-2xl sm:text-3xl font-bold gradient-text mb-2">Roku</h2>
-			<p class="text-gray-300 text-lg">Instrucciones de instalación</p>
+			<img src="/images/roku.svg" alt="Roku Logo" class="w-16 h-16 mx-auto mb-4"/>
 		</div>
 
 		<div class="modal-body">
@@ -118,18 +112,11 @@
 	</div>
 </dialog>
 
-<!-- Modal Fire Stick -->
+<!-- Modal Fire TV -->
 <dialog id="firestick-modal" class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<svg class="w-16 h-16 mx-auto mb-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<circle cx="24" cy="24" r="18" fill="#FF9900"/>
-				<path d="M24 12C24 12 20 16 20 20C20 22.2091 21.7909 24 24 24C26.2091 24 28 22.2091 28 20C28 16 24 12 24 12Z" fill="white"/>
-				<path d="M17 26C17 26 15 28 15 30C15 31.1046 15.8954 32 17 32C18.1046 32 19 31.1046 19 30C19 28 17 26 17 26Z" fill="white" opacity="0.9"/>
-				<path d="M31 26C31 26 29 28 29 30C29 31.1046 29.8954 32 31 32C32.1046 32 33 31.1046 33 30C33 28 31 26 31 26Z" fill="white" opacity="0.9"/>
-			</svg>
-			<h2 class="text-2xl sm:text-3xl font-bold gradient-text mb-2">Fire Stick</h2>
-			<p class="text-gray-300 text-lg">Instrucciones de instalación</p>
+			<img src="/images/firetv.svg" alt="Fire TV Logo" class="w-16 h-16 mx-auto mb-4"/>
 		</div>
 
 		<div class="modal-body">
@@ -167,61 +154,135 @@
 	</div>
 </dialog>
 
-<!-- Estilos para botones de plataformas y modales -->
+<!-- Estilos para badges y modales -->
 <style>
-	/* Botones de Plataformas */
-	.platform-btn {
-		@apply flex flex-col items-center justify-center gap-3 px-8 py-6 rounded-2xl transition-all duration-300 transform cursor-pointer;
-		background: rgba(10, 29, 55, 0.7);
-		border: 2px solid rgba(0, 206, 255, 0.3);
-		backdrop-filter: blur(10px);
-		color: white;
-		min-width: 140px;
+	/* ==========================================
+	   BADGES DE PLATAFORMAS - Estilo profesional
+	   ========================================== */
+
+	.platform-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-start;
+		height: 3.5rem;
+		background: white;
+		border: none;
+		border-radius: 1.75rem;
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		transform: translateZ(0);
+		gap: 0.75rem;
 	}
 
-	.platform-btn:hover {
-		transform: translateY(-5px) scale(1.05);
-		border-color: rgba(0, 206, 255, 0.8);
-		box-shadow: 0 15px 35px rgba(0, 206, 255, 0.4);
-		background: rgba(10, 29, 55, 0.9);
+	.platform-badge-content {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		width: 100%;
 	}
 
-	.platform-btn:active {
-		transform: translateY(-2px) scale(1.02);
+	.platform-logo {
+		height: 2rem;
+		width: 2rem;
+		flex-shrink: 0;
+		display: block;
 	}
 
-	.platform-btn svg {
-		transition: transform 0.3s ease;
+	.platform-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
-	.platform-btn:hover svg {
-		transform: scale(1.1) rotate(5deg);
+	.platform-label {
+		margin: 0;
+		font-size: 0.65rem;
+		color: #666666;
+		font-weight: 600;
+		text-transform: uppercase;
+		line-height: 1;
 	}
 
-	/* Modal Dialog Nativo */
+	.platform-name {
+		margin: 0;
+		font-size: 0.9rem;
+		color: #000000;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	.platform-badge:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(0, 206, 255, 0.25);
+	}
+
+	.platform-badge:active {
+		transform: translateY(-1px);
+	}
+
+	/* Fire TV spanning 2 columns en mobile para centrado */
+	.platform-badge:nth-child(3) {
+		grid-column: 1 / -1;
+		max-width: 280px;
+		margin: 0 auto;
+	}
+
+	@media (min-width: 640px) {
+		.platform-badge {
+			height: 4rem;
+			padding: 0.6rem 1.2rem;
+		}
+
+		.platform-logo {
+			height: 3rem;
+			width: 3rem;
+		}
+
+		.platform-label {
+			font-size: 0.7rem;
+		}
+
+		.platform-name {
+			font-size: 1rem;
+		}
+
+		/* Reset para Fire TV en desktop */
+		.platform-badge:nth-child(3) {
+			grid-column: auto;
+			max-width: none;
+		}
+	}
+
+	/* ==========================================
+	   MODALES - Centrado perfecto (Tailwind v4)
+	   ========================================== */
+
 	.modal-dialog {
+		margin: auto;
 		border: none;
 		background: transparent;
 		padding: 0;
-		max-width: 90vw;
-		width: 500px;
+		max-width: min(90vw, 500px);
+		width: 100%;
 		border-radius: 1.5rem;
-		box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 	}
 
 	.modal-dialog::backdrop {
-		background: rgba(0, 0, 0, 0.8);
-		backdrop-filter: blur(8px);
-		animation: fadeIn 0.3s ease-out;
+		background: rgba(0, 0, 0, 0.85);
+		backdrop-filter: blur(10px);
+		animation: fadeIn 0.25s ease-out;
 	}
 
 	.modal-content {
-		background: linear-gradient(145deg, rgba(10, 29, 55, 0.95) 0%, rgba(5, 11, 21, 0.98) 100%);
+		background: linear-gradient(145deg, rgba(10, 29, 55, 0.98) 0%, rgba(5, 11, 21, 1) 100%);
 		border: 2px solid rgba(0, 206, 255, 0.4);
 		border-radius: 1.5rem;
 		padding: 2rem;
-		animation: slideUp 0.4s ease-out;
-		box-shadow: 0 0 60px rgba(0, 206, 255, 0.3);
+		box-shadow:
+			0 0 60px rgba(0, 206, 255, 0.3),
+			0 25px 50px rgba(0, 0, 0, 0.5);
+		animation: slideUpBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	.modal-header {
@@ -241,10 +302,13 @@
 	}
 
 	.code-box {
-		@apply mt-4 p-6 rounded-xl;
-		background: rgba(0, 206, 255, 0.1);
+		margin-top: 1rem;
+		padding: 1.5rem;
+		border-radius: 0.75rem;
+		background: rgba(0, 206, 255, 0.08);
 		border: 2px solid rgba(0, 206, 255, 0.3);
 		backdrop-filter: blur(5px);
+		transition: all 0.3s ease;
 	}
 
 	.code-box:hover {
@@ -259,13 +323,19 @@
 		border-top: 1px solid rgba(0, 206, 255, 0.2);
 	}
 
-	/* Animación de apertura del modal */
-	@keyframes slideUp {
-		from {
+	/* ==========================================
+	   ANIMACIONES
+	   ========================================== */
+
+	@keyframes slideUpBounce {
+		0% {
 			opacity: 0;
 			transform: translateY(30px) scale(0.95);
 		}
-		to {
+		70% {
+			transform: translateY(-3px) scale(1.01);
+		}
+		100% {
 			opacity: 1;
 			transform: translateY(0) scale(1);
 		}
@@ -280,10 +350,12 @@
 		}
 	}
 
-	/* Responsive adjustments */
+	/* ==========================================
+	   RESPONSIVE
+	   ========================================== */
+
 	@media (max-width: 640px) {
 		.modal-dialog {
-			width: 95vw;
 			max-width: 95vw;
 		}
 
@@ -299,24 +371,22 @@
 
 <!-- Script para manejar modales -->
 <script>
-	// Función para abrir modales
 	function openModal(modalId: string) {
 		const modal = document.getElementById(modalId) as HTMLDialogElement;
 		if (modal) {
 			modal.showModal();
+			document.body.style.overflow = 'hidden';
 		}
 	}
 
-	// Función para cerrar modales
 	function closeModal(modal: HTMLDialogElement) {
 		if (modal) {
 			modal.close();
+			document.body.style.overflow = '';
 		}
 	}
 
-	// Event listeners para botones que abren modales
 	document.addEventListener('DOMContentLoaded', () => {
-		// Abrir modales con botones trigger
 		const modalTriggers = document.querySelectorAll('[data-modal-trigger]');
 		modalTriggers.forEach((trigger) => {
 			trigger.addEventListener('click', () => {
@@ -327,7 +397,6 @@
 			});
 		});
 
-		// Cerrar modales con botones close
 		const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
 		modalCloseButtons.forEach((button) => {
 			button.addEventListener('click', () => {
@@ -336,7 +405,6 @@
 			});
 		});
 
-		// Cerrar modal al hacer click fuera del contenido (en el backdrop)
 		const modals = document.querySelectorAll('.modal-dialog');
 		modals.forEach((modal) => {
 			modal.addEventListener('click', (event) => {
@@ -353,7 +421,5 @@
 				}
 			});
 		});
-
-		// Cerrar modal con tecla ESC (nativo del elemento dialog)
 	});
 </script>
