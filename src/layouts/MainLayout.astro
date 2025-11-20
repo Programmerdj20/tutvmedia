@@ -65,7 +65,7 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 				<img src="/images/Logo_navbar.webp" alt="TUTV.MEDIA" class="h-12 mb-8" />
 
 				<!-- Links del sidebar -->
-				<nav class="space-y-6">
+				<nav class="space-y-6 mb-8">
 					<a href="#inicio" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
 						Inicio
 					</a>
@@ -82,6 +82,18 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 						Contacto
 					</a>
 				</nav>
+
+				<!-- Botón Solicita un Demo Mobile -->
+				<div class="pt-8 border-t border-blue-200">
+					<a
+						href="https://t.me/+hvO0sXVTNxs2MTZh"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-primary w-full text-center block"
+					>
+						Solicita un Demo
+					</a>
+				</div>
 			</div>
 		</aside>
 
@@ -89,12 +101,12 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 		<header class="sticky top-0 z-40 bg-[#050505] border-b border-blue-200 shadow-sm">
 			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
 				<!-- Logo (Desktop y Mobile) -->
-				<a href="/" class="flex items-center">
+				<a href="/" class="flex items-center flex-shrink-0">
 					<img src="/images/Logo_navbar.webp" alt="TUTV.MEDIA" class="h-12 md:h-14" />
 				</a>
 
-				<!-- Navegación Desktop (oculta en móvil) -->
-				<div class="hidden md:flex items-center gap-8">
+				<!-- Navegación Desktop (oculta en móvil) - Centrada -->
+				<div class="hidden md:flex items-center gap-8 flex-1 justify-center">
 					<a href="#inicio" class="text-white hover:text-blue-300 transition-colors font-medium">
 						Inicio
 					</a>
@@ -111,6 +123,16 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 						Contacto
 					</a>
 				</div>
+
+				<!-- Botón Demo Desktop (solo en desktop) -->
+				<a
+					href="https://t.me/+hvO0sXVTNxs2MTZh"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="hidden md:inline-block btn-primary flex-shrink-0"
+				>
+					Solicita un Demo
+				</a>
 
 				<!-- Botón Hamburguesa (solo móvil) -->
 				<button
