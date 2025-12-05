@@ -1,13 +1,17 @@
 ---
-import '../styles/globals.css';
-import Footer from '../components/Footer.astro';
+import "../styles/globals.css";
+import Footer from "../components/Footer.astro";
+import PromoPopup from "../components/PromoPopup.astro";
 
 export interface Props {
 	title?: string;
 	description?: string;
 }
 
-const { title = 'TutvMedia - Películas y Series', description = 'Descubre películas y series populares' } = Astro.props;
+const {
+	title = "TutvMedia - Películas y Series",
+	description = "Descubre películas y series populares",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +23,10 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="theme-color" content="#00CEFF" />
 		<meta name="author" content="TutvMedia" />
-		<meta name="keywords" content="películas, series, cine, streaming, descubrimiento" />
+		<meta
+			name="keywords"
+			content="películas, series, cine, streaming, descubrimiento"
+		/>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/webp" href="/favicon.webp" />
@@ -42,7 +49,8 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 			id="overlay"
 			class="fixed inset-0 bg-black/50 opacity-0 invisible transition-all duration-300 z-40"
 			data-overlay
-		></div>
+		>
+		</div>
 
 		<!-- Sidebar/Drawer Mobile -->
 		<aside
@@ -57,29 +65,62 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 					class="absolute top-4 right-4 p-2 rounded-lg hover:bg-blue-200 transition-colors text-gray-700"
 					aria-label="Cerrar menú"
 				>
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					<svg
+						class="w-6 h-6"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"></path>
 					</svg>
 				</button>
 
 				<!-- Logo en sidebar -->
-				<img src="/images/Logo_navbar.webp" alt="TUTV.MEDIA" class="h-12 mb-8" />
+				<img
+					src="/images/Logo_navbar.webp"
+					alt="TUTV.MEDIA"
+					class="h-12 mb-8"
+				/>
 
 				<!-- Links del sidebar -->
 				<nav class="space-y-6 mb-8">
-					<a href="#inicio" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a
+						href="#inicio"
+						class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium"
+						data-sidebar-link
+					>
 						Inicio
 					</a>
-					<a href="#planes" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a
+						href="#planes"
+						class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium"
+						data-sidebar-link
+					>
 						Planes
 					</a>
-					<a href="#" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a
+						href="#"
+						class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium"
+						data-sidebar-link
+					>
 						Instalación
 					</a>
-					<a href="#" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a
+						href="#"
+						class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium"
+						data-sidebar-link
+					>
 						Reseller
 					</a>
-					<a href="#" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium" data-sidebar-link>
+					<a
+						href="#"
+						class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-200 hover:text-blue-700 transition-colors font-medium"
+						data-sidebar-link
+					>
 						Contacto
 					</a>
 				</nav>
@@ -99,28 +140,53 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 		</aside>
 
 		<!-- Header/Navbar -->
-		<header class="sticky top-0 z-40 bg-[#050505] border-b border-blue-200 shadow-sm">
-			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+		<header
+			class="sticky top-0 z-40 bg-[#050505] border-b border-blue-200 shadow-sm"
+		>
+			<nav
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between"
+			>
 				<!-- Logo (Desktop y Mobile) -->
 				<a href="/" class="flex items-center flex-shrink-0">
-					<img src="/images/Logo_navbar.webp" alt="TUTV.MEDIA" class="h-12 md:h-14" />
+					<img
+						src="/images/Logo_navbar.webp"
+						alt="TUTV.MEDIA"
+						class="h-12 md:h-14"
+					/>
 				</a>
 
 				<!-- Navegación Desktop (oculta en móvil) - Centrada -->
-				<div class="hidden md:flex items-center gap-8 flex-1 justify-center">
-					<a href="#inicio" class="text-white hover:text-blue-300 transition-colors font-medium">
+				<div
+					class="hidden md:flex items-center gap-8 flex-1 justify-center"
+				>
+					<a
+						href="#inicio"
+						class="text-white hover:text-blue-300 transition-colors font-medium"
+					>
 						Inicio
 					</a>
-					<a href="#planes" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a
+						href="#planes"
+						class="text-white hover:text-blue-300 transition-colors font-medium"
+					>
 						Planes
 					</a>
-					<a href="#" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a
+						href="#"
+						class="text-white hover:text-blue-300 transition-colors font-medium"
+					>
 						Instalación
 					</a>
-					<a href="#" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a
+						href="#"
+						class="text-white hover:text-blue-300 transition-colors font-medium"
+					>
 						Reseller
 					</a>
-					<a href="#" class="text-white hover:text-blue-300 transition-colors font-medium">
+					<a
+						href="#"
+						class="text-white hover:text-blue-300 transition-colors font-medium"
+					>
 						Contacto
 					</a>
 				</div>
@@ -142,8 +208,17 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 					aria-label="Abrir menú"
 					aria-expanded="false"
 				>
-					<svg class="w-6 h-6 group-hover:stroke-[#050505]" fill="none" stroke="white" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					<svg
+						class="w-6 h-6 group-hover:stroke-[#050505]"
+						fill="none"
+						stroke="white"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"></path>
 					</svg>
 				</button>
 			</nav>
@@ -157,55 +232,60 @@ const { title = 'TutvMedia - Películas y Series', description = 'Descubre pelí
 		<!-- Footer Component -->
 		<Footer />
 
+		<!-- Promo Popup -->
+		<PromoPopup />
+
 		<!-- Script para manejar el sidebar y smooth scroll -->
 		<script>
-			const hamburger = document.getElementById('hamburger');
-			const sidebar = document.getElementById('sidebar');
-			const overlay = document.getElementById('overlay');
-			const closeSidebar = document.getElementById('closeSidebar');
-			const sidebarLinks = document.querySelectorAll('[data-sidebar-link]');
+			const hamburger = document.getElementById("hamburger");
+			const sidebar = document.getElementById("sidebar");
+			const overlay = document.getElementById("overlay");
+			const closeSidebar = document.getElementById("closeSidebar");
+			const sidebarLinks = document.querySelectorAll(
+				"[data-sidebar-link]",
+			);
 
 			// Función para abrir el sidebar
 			function openSidebar() {
-				sidebar?.classList.remove('translate-x-full');
-				sidebar?.classList.add('translate-x-0');
-				overlay?.classList.remove('opacity-0', 'invisible');
-				overlay?.classList.add('opacity-100');
-				document.body.classList.add('overflow-hidden');
+				sidebar?.classList.remove("translate-x-full");
+				sidebar?.classList.add("translate-x-0");
+				overlay?.classList.remove("opacity-0", "invisible");
+				overlay?.classList.add("opacity-100");
+				document.body.classList.add("overflow-hidden");
 			}
 
 			// Función para cerrar el sidebar
 			function closeSidebarFn() {
-				sidebar?.classList.add('translate-x-full');
-				sidebar?.classList.remove('translate-x-0');
-				overlay?.classList.add('opacity-0', 'invisible');
-				overlay?.classList.remove('opacity-100');
-				document.body.classList.remove('overflow-hidden');
+				sidebar?.classList.add("translate-x-full");
+				sidebar?.classList.remove("translate-x-0");
+				overlay?.classList.add("opacity-0", "invisible");
+				overlay?.classList.remove("opacity-100");
+				document.body.classList.remove("overflow-hidden");
 			}
 
 			// Event listeners
-			hamburger?.addEventListener('click', openSidebar);
-			closeSidebar?.addEventListener('click', closeSidebarFn);
-			overlay?.addEventListener('click', closeSidebarFn);
+			hamburger?.addEventListener("click", openSidebar);
+			closeSidebar?.addEventListener("click", closeSidebarFn);
+			overlay?.addEventListener("click", closeSidebarFn);
 
 			// Cerrar al hacer clic en un link
 			sidebarLinks.forEach((link) => {
-				link.addEventListener('click', closeSidebarFn);
+				link.addEventListener("click", closeSidebarFn);
 			});
 
 			// Smooth scroll mejorado con velocidad controlada
-			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-				anchor.addEventListener('click', function (e) {
-					const href = this.getAttribute('href');
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					const href = this.getAttribute("href");
 					// Solo interceptar si es un hash válido (no solo "#")
-					if (href !== '#' && href.startsWith('#')) {
+					if (href !== "#" && href.startsWith("#")) {
 						e.preventDefault();
 						const target = document.querySelector(href);
 						if (target) {
 							// Usar scrollIntoView con opciones de smooth scroll
 							target.scrollIntoView({
-								behavior: 'smooth',
-								block: 'start'
+								behavior: "smooth",
+								block: "start",
 							});
 						}
 					}
