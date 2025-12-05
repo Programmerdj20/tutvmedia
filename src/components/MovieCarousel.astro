@@ -1,6 +1,6 @@
 ---
-import type { MovieResult } from '../types/movie';
-import MovieCard from './MovieCard.astro';
+import type { MovieResult } from "../types/movie";
+import MovieCard from "./MovieCard.astro";
 
 export interface Props {
 	title: string;
@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { title, subtitle, movies } = Astro.props;
-const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
+const id = `carousel-${title.replace(/\s+/g, "-").toLowerCase()}`;
 ---
 
 <section class="py-12">
@@ -22,44 +22,63 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 		</div>
 
 		<div class="relative">
-			<div
-				class="overflow-hidden"
-				id={id}
-			>
+			<div class="overflow-hidden" id={id}>
 				<div class="flex gap-6 pb-4">
 					{/* Películas originales */}
-					{movies.map((movie) => (
-						<div class="flex-none w-[200px] sm:w-[240px]">
-							<MovieCard movie={movie} />
-						</div>
-					))}
+					{
+						movies.map((movie) => (
+							<div class="flex-none w-[200px] sm:w-[240px]">
+								<MovieCard movie={movie} />
+							</div>
+						))
+					}
 					{/* Películas duplicadas para loop infinito */}
-					{movies.map((movie) => (
-						<div class="flex-none w-[200px] sm:w-[240px]">
-							<MovieCard movie={movie} />
-						</div>
-					))}
+					{
+						movies.map((movie) => (
+							<div class="flex-none w-[200px] sm:w-[240px]">
+								<MovieCard movie={movie} />
+							</div>
+						))
+					}
 				</div>
 			</div>
 
 			<!-- Botones de navegación -->
 			<button
-				class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 sm:-translate-x-4 z-10 bg-white hover:bg-blue-50 border border-blue-200 rounded-full p-2 transition-all duration-200 opacity-0 group-hover:opacity-100"
+				class="hidden md:block carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 sm:-translate-x-4 z-10 bg-white hover:bg-blue-50 border border-blue-200 rounded-full p-2 transition-all duration-200 opacity-0 group-hover:opacity-100"
 				data-carousel={id}
 				aria-label="Anterior"
 			>
-				<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+				<svg
+					class="w-5 h-5 text-blue-600"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M15 19l-7-7 7-7"></path>
 				</svg>
 			</button>
 
 			<button
-				class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 sm:translate-x-4 z-10 bg-white hover:bg-blue-50 border border-blue-200 rounded-full p-2 transition-all duration-200 opacity-0 group-hover:opacity-100"
+				class="hidden md:block carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 sm:translate-x-4 z-10 bg-white hover:bg-blue-50 border border-blue-200 rounded-full p-2 transition-all duration-200 opacity-0 group-hover:opacity-100"
 				data-carousel={id}
 				aria-label="Siguiente"
 			>
-				<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+				<svg
+					class="w-5 h-5 text-blue-600"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 5l7 7-7 7"></path>
 				</svg>
 			</button>
 		</div>
@@ -69,8 +88,12 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 <script define:vars={{ id }}>
 	// Carrusel con scroll automático y manual
 	const carousel = document.getElementById(id);
-	const prevBtn = document.querySelector(`[data-carousel="${id}"].carousel-prev`);
-	const nextBtn = document.querySelector(`[data-carousel="${id}"].carousel-next`);
+	const prevBtn = document.querySelector(
+		`[data-carousel="${id}"].carousel-prev`,
+	);
+	const nextBtn = document.querySelector(
+		`[data-carousel="${id}"].carousel-next`,
+	);
 
 	const scrollAmount = 300;
 	let autoScrollInterval;
@@ -81,7 +104,7 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 		if (carousel && !isUserInteracting) {
 			carousel.scrollTo({
 				left: carousel.scrollLeft + scrollAmount,
-				behavior: 'smooth'
+				behavior: "smooth",
 			});
 		}
 	};
@@ -98,11 +121,11 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 
 	// Scroll manual prev
 	if (prevBtn && carousel) {
-		prevBtn.addEventListener('click', () => {
+		prevBtn.addEventListener("click", () => {
 			isUserInteracting = true;
 			carousel.scrollTo({
 				left: carousel.scrollLeft - scrollAmount,
-				behavior: 'smooth'
+				behavior: "smooth",
 			});
 			stopAutoScroll();
 			setTimeout(() => {
@@ -114,11 +137,11 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 
 	// Scroll manual next
 	if (nextBtn && carousel) {
-		nextBtn.addEventListener('click', () => {
+		nextBtn.addEventListener("click", () => {
 			isUserInteracting = true;
 			carousel.scrollTo({
 				left: carousel.scrollLeft + scrollAmount,
-				behavior: 'smooth'
+				behavior: "smooth",
 			});
 			stopAutoScroll();
 			setTimeout(() => {
@@ -133,20 +156,22 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 		if (!carousel) return;
 
 		const isAtStart = carousel.scrollLeft === 0;
-		const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+		const isAtEnd =
+			carousel.scrollLeft + carousel.clientWidth >=
+			carousel.scrollWidth - 10;
 
 		if (prevBtn) {
-			prevBtn.style.opacity = isAtStart ? '0.3' : '1';
+			prevBtn.style.opacity = isAtStart ? "0.3" : "1";
 			prevBtn.disabled = isAtStart;
 		}
 
 		if (nextBtn) {
-			nextBtn.style.opacity = isAtEnd ? '0.3' : '1';
+			nextBtn.style.opacity = isAtEnd ? "0.3" : "1";
 			nextBtn.disabled = isAtEnd;
 		}
 	};
 
-	carousel?.addEventListener('scroll', updateButtonsVisibility);
+	carousel?.addEventListener("scroll", updateButtonsVisibility);
 	updateButtonsVisibility();
 
 	// Detectar cuando llegó al final para resetear al inicio (loop infinito)
@@ -162,7 +187,7 @@ const id = `carousel-${title.replace(/\s+/g, '-').toLowerCase()}`;
 		}
 	};
 
-	carousel?.addEventListener('scroll', resetScrollPosition);
+	carousel?.addEventListener("scroll", resetScrollPosition);
 
 	// Iniciar auto-scroll al cargar
 	startAutoScroll();
